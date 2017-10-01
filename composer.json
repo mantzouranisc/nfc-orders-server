@@ -1,0 +1,15 @@
+{
+    "name": "twistedsocket/nfc-orders-server",
+    "description": "Formats, saves and prints incoming order requests to the supplied thermal printer using esc/pos lib",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Christos Mantzouranis",
+            "email": "mantzouranisc@gmail.com"
+        }
+    ],
+    "require": {
+        "mike42/escpos-php": "^1.5",
+        "guzzlehttp/guzzle": "^6.3"
+    }
+}
