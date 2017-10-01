@@ -92,6 +92,7 @@ class Order {
 			try {
 				$addressImage = new AddressImage( $this->billing );
 				$image = $addressImage->fetchAddressImage();
+				error_log(var_export($image,true));
 				file_put_contents( 'tempImageFile', $image );
 				$map = EscposImage::load( "tempImageFile", false );
 				$printer->bitImage( $map );

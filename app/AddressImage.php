@@ -11,6 +11,7 @@ use GuzzleHttp\Client;
 class AddressImage {
 
 	private $_center;
+
 	private $_size;
 	private $_zoom;
 	private $_apiKey;
