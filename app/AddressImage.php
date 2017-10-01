@@ -6,6 +6,7 @@
  * Time: 22:42
  */
 require '../vendor/autoload.php';
+use GuzzleHttp\Client;
 
 class AddressImage {
 
@@ -30,7 +31,7 @@ class AddressImage {
 	public function fetchAddressImage() {
 
 
-		$client = new GuzZleHttp\Client();
+		$client = new Client();
 		$res    = $client->request( 'GET',
 			"https://maps.googleapis.com/maps/api/staticmap?zoom={$this->_zoom}&size={$this->_size}&maptype={$this->_mapType}&center={$this->_center}&key=$this->_apiKey" );
 
