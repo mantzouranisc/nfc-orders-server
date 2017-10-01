@@ -67,7 +67,6 @@ class Order {
 		$printer->text( "Επίθετο: {$this->billing->last_name}" );
 		$printer->text( "Διεύθυνση: {$this->billing->address_1} {$this->billing->address_2} {$this->billing->city} {$this->billing->state} {$this->billing->postcode}" );
 		$printer->text( "Τηλ.: {$this->billing->phone}" );
-		$printer->text( "Σχόλια: {$this->billing->comments}" );
 
 		//Order info
 
@@ -92,7 +91,6 @@ class Order {
 			try {
 				$addressImage = new AddressImage( $this->billing );
 				$imageFile    = $addressImage->fetchAddressImage();
-				error_log( var_export( $imageFile, true ) );
 				$map = EscposImage::load( $imageFile, false );
 				$printer->bitImage( $map );
 

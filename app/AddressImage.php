@@ -6,6 +6,7 @@
  * Time: 22:42
  */
 require '../vendor/autoload.php';
+
 use GuzzleHttp\Client;
 
 class AddressImage {
@@ -21,7 +22,6 @@ class AddressImage {
 		if ( empty( $billingInfo ) ) {
 			throw new Exception( 'No order Item' );
 		}
-		error_log( var_export( $billingInfo, true ) );
 		$this->_center  = $billingInfo->address_1 . ' ' . $billingInfo->address_2 . ' ' . $billingInfo->city . ' ' . $billingInfo->country;
 		$this->_size    = Config::MAP_SIZE;
 		$this->_zoom    = Config::MAP_ZOOM;
@@ -33,9 +33,10 @@ class AddressImage {
 
 
 		$fileName = 'tmp.png';
-		$client = new Client();
-		$res    = $client->request( 'GET',
-			"https://maps.googleapis.com/maps/api/staticmap?zoom={$this->_zoom}&size={$this->_size}&maptype={$this->_mapType}&center={$this->_center}&key=$this->_apiKey", ['sink' => 'tmp.png'] );
+		$client   = new Client();
+		$res      = $client->request( 'GET',
+			"https://maps.googleapis.com/maps/api/staticmap?zoom={$this->_zoom}&size={$this->_size}&maptype={$this->_mapType}&center={$this->_center}&key=$this->_apiKey",
+			[ 'sink' => 'tmp.png' ] );
 
 		if ( '200' != $res->getStatusCode() ) {
 			error_log( 'Failed to get GMaps static image: ' . $res->getStatusCode() );
