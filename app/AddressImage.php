@@ -32,9 +32,10 @@ class AddressImage {
 	public function fetchAddressImage() {
 
 
+		$fileName = 'tmp.png';
 		$client = new Client();
 		$res    = $client->request( 'GET',
-			"https://maps.googleapis.com/maps/api/staticmap?zoom={$this->_zoom}&size={$this->_size}&maptype={$this->_mapType}&center={$this->_center}&key=$this->_apiKey" );
+			"https://maps.googleapis.com/maps/api/staticmap?zoom={$this->_zoom}&size={$this->_size}&maptype={$this->_mapType}&center={$this->_center}&key=$this->_apiKey", ['sink' => 'tmp.png'] );
 
 		if ( '200' != $res->getStatusCode() ) {
 			error_log( 'Failed to get GMaps static image: ' . $res->getStatusCode() );
@@ -42,7 +43,7 @@ class AddressImage {
 			return false;
 		}
 
-		return $res->getBody();
+		return $fileName;
 
 	}
 }

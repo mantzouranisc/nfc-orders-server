@@ -91,10 +91,9 @@ class Order {
 		if ( Config::MAP_PRINT ) {
 			try {
 				$addressImage = new AddressImage( $this->billing );
-				$image = $addressImage->fetchAddressImage();
-				error_log(var_export($image,true));
-				file_put_contents( 'tempImageFile', $image );
-				$map = EscposImage::load( "tempImageFile", false );
+				$imageFile = $addressImage->fetchAddressImage();
+				error_log(var_export($imageFile,true));
+				$map = EscposImage::load( $imageFile, false );
 				$printer->bitImage( $map );
 			} catch ( Exception $e ) {
 				error_log( "Unable to print map: {$e->getMessage()}" );
