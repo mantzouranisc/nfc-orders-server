@@ -67,6 +67,7 @@ class Order {
 		$printer->text( "Επίθετο: {$this->billing->last_name}" );
 		$printer->text( "Διεύθυνση: {$this->billing->address_1} {$this->billing->address_2} {$this->billing->city} {$this->billing->state} {$this->billing->postcode}" );
 		$printer->text( "Τηλ.: {$this->billing->phone}" );
+		$printer->text( "Σχόλια: {$this->customer_note}" );
 
 		//Order info
 
