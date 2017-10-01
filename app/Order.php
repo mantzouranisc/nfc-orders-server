@@ -95,6 +95,7 @@ class Order {
 				error_log(var_export($imageFile,true));
 				$map = EscposImage::load( $imageFile, false );
 				$printer->bitImage( $map );
+				unlink($imageFile);
 			} catch ( Exception $e ) {
 				error_log( "Unable to print map: {$e->getMessage()}" );
 			}
