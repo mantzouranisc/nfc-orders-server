@@ -6,7 +6,7 @@
  * Time: 20:35
  */
 
-require '../autoload.php';
+require '../vendor/autoload.php';
 include_once 'Config.php';
 include_once 'TwistedPrinter.php';
 include_once 'AddressImage.php';

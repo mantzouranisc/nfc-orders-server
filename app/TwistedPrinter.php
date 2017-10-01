@@ -6,7 +6,7 @@
  * Time: 23:40
  */
 
-require '../autoload.php';
+require '../vendor/autoload.php';
 use Mike42\Escpos\Printer;
 class TwistedPrinter extends \Mike42\Escpos\Printer {
 
